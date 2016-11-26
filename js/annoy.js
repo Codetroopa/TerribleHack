@@ -1,18 +1,17 @@
 var TIME_COUNT = 0;
 var onetimePromptTime = 5;
-var outboundPromptTime = 20;
+var outboundPromptTime = 0;
 var randomClickTime = 30;
-var scrollInterval = 13;
+var scrollInterval = 9;
 var refreshInterval = 60;
 var colourTime = 0;
-var hingeTime = 10;
+var hingeTime = 0;
 
 var colourChance = 10;
-var hingeChance = 2;
+var hingeChance = 4;
 
 var alertFlag = false;
 
-var images = [];
 
 
 function doUpdate() {
@@ -33,8 +32,9 @@ function doUpdate() {
 	}
 	
 	if ((TIME_COUNT / 1000) % 3 === 0) {
-		var randnum = Math.floor(Math.random() * images.size);
-		
+		console.log(document.images.length);
+		var randImage = document.images[Math.floor(Math.random() * document.images.length)];
+		$(randImage).attr("src", "/img/cryEmoji.png");
 	}
 }
 
@@ -70,8 +70,6 @@ function performHinge(elem, chance) {
 }
 
 $(document).ready(function(event) {
-	// load images
-	images = document.images;
     document.body.style.fontFamily = "ComicSansMS,cursive,sans-serif";
 });
 
@@ -121,6 +119,10 @@ $("img").click(function () {
 			
 		}
 	}
+});
+
+$("img").mouseover(function () {
+	
 });
 
 function debugOut() {
