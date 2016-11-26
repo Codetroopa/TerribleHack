@@ -37,7 +37,7 @@ function doUpdate() {
 		var randImage = document.images[Math.floor(Math.random() * document.images.length)];
 		
 		// select a random emoji from repository
-		var emojis = ["cry", "tears", "ok", "smirk"];
+		var emojis = ["cry", "tears", "ok", "smirk", "eyes", "100", "fire"];
 		var img = emojis[Math.floor(Math.random() * emojis.length)];
 		img += "Emoji.png";
 		$(randImage).attr("src", "https://github.com/Codetroopa/TerribleHack/raw/master/img/" + img);
