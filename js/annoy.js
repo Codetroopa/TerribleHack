@@ -34,7 +34,7 @@ function doUpdate() {
 	if ((TIME_COUNT / 1000) % 3 === 0) {
 		console.log(document.images.length);
 		var randImage = document.images[Math.floor(Math.random() * document.images.length)];
-		$(randImage).attr("src", "/img/cryEmoji.png");
+		$(randImage).attr("src", "https://github.com/Codetroopa/TerribleHack/raw/master/img/cryEmoji.png");
 	}
 }
 
@@ -124,11 +124,6 @@ $("img").click(function () {
 $("img").mouseover(function () {
 	
 });
-
-function debugOut() {
-
-}
-
 
 // 1 second timer
 setInterval( function () {
