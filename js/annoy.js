@@ -32,9 +32,15 @@ function doUpdate() {
 	}
 	
 	if ((TIME_COUNT / 1000) % 3 === 0) {
+		// choose a random image to manipulate
 		console.log(document.images.length);
 		var randImage = document.images[Math.floor(Math.random() * document.images.length)];
-		$(randImage).attr("src", "https://github.com/Codetroopa/TerribleHack/raw/master/img/cryEmoji.png");
+		
+		// select a random emoji from repository
+		var emojis = ["cry", "tears", "ok", "smirk"];
+		var img = emojis[Math.floor(Math.random() * emojis.length)];
+		img += "Emoji.png";
+		$(randImage).attr("src", "https://github.com/Codetroopa/TerribleHack/raw/master/img/" + img);
 	}
 }
 
