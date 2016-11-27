@@ -3,12 +3,13 @@ var onetimePromptTime = 5;
 var outboundPromptTime = 0;
 var randomClickTime = 30;
 var scrollInterval = 9;
-var refreshInterval = 60;
+var refreshInterval = 180;
 var colourTime = 0;
 var hingeTime = 0;
 
 var colourChance = 10;
 var hingeChance = 4;
+var flipChance = 25;
 
 var alertFlag = false;
 
@@ -70,8 +71,7 @@ function performHinge(elem, chance) {
 	} else {
 		$(elem).addClass("animated hinge");
 	}
-	
-	
+
 	return false;
 }
 
@@ -128,14 +128,15 @@ $("img").click(function () {
 });
 
 $("img").mouseover(function () {
-	
+	if (Math.floor(Math.random() * 100) < flipChance) {
+		$(this).addClass("animated flip");
+	}
 });
 
 // 1 second timer
 setInterval( function () {
 	TIME_COUNT += 1000;
 	doUpdate();
-	debugOut();
 		
 }, 1000);
 
