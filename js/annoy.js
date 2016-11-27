@@ -127,9 +127,16 @@ $("img").click(function () {
 	}
 });
 
+function animateCss (obj, animationName) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        $(obj).addClass('animated ' + animationName).one(animationEnd, function() {
+            $(obj).removeClass('animated ' + animationName);
+        });
+    }
+
 $("img").mouseover(function () {
 	if (Math.floor(Math.random() * 100) < flipChance) {
-		$(this).addClass("animated flip");
+		animateCss(this, 'flip');
 	}
 });
 
