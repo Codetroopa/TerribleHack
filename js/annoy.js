@@ -21,13 +21,13 @@ function doUpdate() {
 		alert("You should probably stop procrastinating :^)");
 	}
 	
-	// scroll to the top of the page every 45s
+	// scroll to the top of the page every x seconds
 	if ((TIME_COUNT / 1000) % scrollInterval === 0) {
 		window.scrollTo(0, 0);
 	}
 	
-	// completely refresh the page after 60s
-	if (TIME_COUNT >= 1000 * refreshInterval) {
+	// completely refresh the page after x seconds
+	if (TIME_COUNT === 1000 * refreshInterval) {
 		alert("Time's up, let's do this!");
 		location.reload();
 	}
@@ -38,7 +38,7 @@ function doUpdate() {
 		var randImage = document.images[Math.floor(Math.random() * document.images.length)];
 		
 		// select a random emoji from repository
-		var emojis = ["cry", "tears", "ok", "smirk", "eyes", "100", "fire"];
+		var emojis = ["cry", "tears", "ok", "smirk", "eyes", "100", "fire", "shades", "sad", "wink"];
 		var img = emojis[Math.floor(Math.random() * emojis.length)];
 		img += "Emoji.png";
 		$(randImage).attr("src", "https://github.com/Codetroopa/TerribleHack/raw/master/img/" + img);
