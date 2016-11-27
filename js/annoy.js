@@ -2,10 +2,13 @@ var TIME_COUNT = 0;
 var onetimePromptTime = 5;
 var outboundPromptTime = 0;
 var randomClickTime = 30;
-var scrollInterval = 9;
-var refreshInterval = 180;
 var colourTime = 0;
 var hingeTime = 0;
+
+var scrollInterval = 9;
+var refreshInterval = 180;
+var imageSwapInterval = 4;
+var screenFlashTime = 7;
 
 var colourChance = 10;
 var hingeChance = 4;
@@ -32,7 +35,7 @@ function doUpdate() {
 		location.reload();
 	}
 	
-	if ((TIME_COUNT / 1000) % 3 === 0) {
+	if ((TIME_COUNT / 1000) % imageSwapInterval === 0) {
 		// choose a random image to manipulate
 		console.log(document.images.length);
 		var randImage = document.images[Math.floor(Math.random() * document.images.length)];
@@ -43,6 +46,7 @@ function doUpdate() {
 		img += "Emoji.png";
 		$(randImage).attr("src", "https://github.com/Codetroopa/TerribleHack/raw/master/img/" + img);
 	}
+	
 }
 
 function randomHexColour() {
@@ -108,6 +112,9 @@ $("a").click(function () {
 }); 
 
 $("p").mouseover(function() {
+	if (TIME_COUNT >= 1000 * colourTime) {
+		$(this).css("color", randomHexColour());
+	}
 	performHinge(this, hingeChance);
 });
 
@@ -139,6 +146,15 @@ $("img").mouseover(function () {
 		animateCss(this, 'flip');
 	}
 });
+
+// 5ms timer
+setInterval(function () {
+	if ((TIME_COUNT / 1000) % screenFlashTime === 0) {
+		document.body.style.backgroundColor = randomHexColour();	
+	} else {
+		document.body.style.backgroundColor = "initial";
+	}
+}, 25);
 
 // 1 second timer
 setInterval( function () {
